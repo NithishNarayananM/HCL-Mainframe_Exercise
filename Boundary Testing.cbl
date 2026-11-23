@@ -1,0 +1,31 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. WITHDRAWAL-TEST.
+
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+
+       01  WS-AMOUNT       PIC S9(7) VALUE 0.
+       01  WS-STATUS       PIC X(10).
+
+       01  WS-MIN-LIMIT    PIC 9(5) VALUE 100.
+       01  WS-MAX-LIMIT    PIC 9(5) VALUE 50000.
+
+       PROCEDURE DIVISION.
+
+           DISPLAY "ENTER WITHDRAWAL AMOUNT: "
+           ACCEPT WS-AMOUNT
+
+           IF WS-AMOUNT >= WS-MIN-LIMIT
+               AND WS-AMOUNT <= WS-MAX-LIMIT
+
+               MOVE "ACCEPTED" TO WS-STATUS
+
+           ELSE
+
+               MOVE "REJECTED" TO WS-STATUS
+
+           END-IF
+
+           DISPLAY WS-STATUS
+
+           STOP RUN.
